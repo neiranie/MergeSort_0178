@@ -2,7 +2,8 @@
 using namespace std;
 
 // create main array & temporary array
-int arr[20], B[20]; // n is array input size
+int arr[20], B[20]; 
+// n is array input size
 int n;
 
 void input()
@@ -35,6 +36,7 @@ void input()
 // create function mergeSort
 void mergeSort(int low, int high)
 {
+
     if (low >= high) // step 1
     {
         return; // step 1.a
@@ -42,14 +44,15 @@ void mergeSort(int low, int high)
 
     int mid = (low + high) / 2; // step 2
 
-     // step 3
+    // step 3
     // fungsi rekursi - memanggil diri sendiri
-    mergeSort(low, mid); // step 3.a
+    mergeSort(low, mid);       // step 3.a
     mergeSort(mid + 1, high); // step 3.b
 
-    int i = low; // step 4.a
+    // step 4
+    int i = low;     // step 4.a
     int j = mid + 1; // step 4.b
-    int k = low; // step 4.c
+    int k = low;     // step 4.c
 
     while (i <= mid && j <= high) // step 4.d
     {
@@ -69,15 +72,15 @@ void mergeSort(int low, int high)
     while (j <= high) // step 4.e
     {
         B[k] = arr[j]; // step 4.e.i
-        j++; // step 4.e.ii
-        k = k + 1; // step 4.e.iii
+        j++;           // step 4.e.ii
+        k = k + 1;     // step 4.e.iii
     }
 
     while (i <= mid) // step 4.f
     {
         B[k] = arr[i]; // step 4.f.i
-        i++;
-        k++; // step 4.f.ii
+        i++;           // step 4.f.ii
+        k++;           // step 4.f.iii
     }
 
     // step 5
@@ -95,4 +98,11 @@ void output()
         cout << arr[i] << " ";
     }
     cout << endl;
+}
+
+int main()
+{
+    input();
+    mergeSort(0, n - 1);
+    output();
 }
